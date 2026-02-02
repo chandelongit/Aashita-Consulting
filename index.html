@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aashita Consulting Services - Marketing & Career Mentoring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(225, 29, 72, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #E11D48, #FB7185);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu.active {
+            display: flex;
+        }
+
+        .nav-link {
+            color: #D1D5DB;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .nav-link:hover {
+            color: #E11D48;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #E11D48, #BE123C);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(225, 29, 72, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            box-shadow: 0 6px 30px rgba(225, 29, 72, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: #D1D5DB;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu button {
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: none;
+            border: none;
+            color: #D1D5DB;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .mobile-menu button:hover {
+            background: #1E293B;
+        }
+
+        .mobile-menu .nav-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 1rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 6rem;
+            background: linear-gradient(135deg, #000000, #1E293B, #000000);
+        }
+
+        .hero-grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(225, 29, 72, 0.1);
+            border: 1px solid rgba(225, 29, 72, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            color: #D1D5DB;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .gradient-text {
+            background: linear-gradient(to right, #E11D48, #FB7185, #E11D48);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #9CA3AF;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #E11D48, #BE123C);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 10px 40px rgba(225, 29, 72, 0.2);
+        }
+
+        .btn-secondary {
+            border: 2px solid #E11D48;
+            color: #E11D48;
+            background: transparent;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #E11D48;
+            color: white;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.875rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9CA3AF;
+        }
+
+        .hero-image {
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.2);
+            background: linear-gradient(135deg, #E11D48, #BE123C, #9F1239);
+            padding: 1px;
+            aspect-ratio: 4/3;
+        }
+
+        .hero-image-inner {
+            width: 100%;
+            height: 100%;
+            background: #0F172A;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Services Section */
+        .services {
+            background: #000000;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: #9CA3AF;
+        }
+
+        .services-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            border: 1px solid #374151;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: rgba(225, 29, 72, 0.5);
+            box-shadow: 0 20px 40px rgba(225, 29, 72, 0.1);
+        }
+
+        .service-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            transition: color 0.3s;
+        }
+
+        .service-card:hover h3 {
+            color: #E11D48;
+        }
+
+        .service-card p {
+            color: #9CA3AF;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #1E293B, #000000, #1E293B);
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .value-icon {
+            color: #E11D48;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #000000;
+        }
+
+        .contact-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-form-card {
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(225, 29, 72, 0.2);
+            box-shadow: 0 20px 60px rgba(225, 29, 72, 0.1);
+        }
+
+        .contact-form-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .form-description {
+            color: #9CA3AF;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .qr-code-section {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(225, 29, 72, 0.05);
+            border-radius: 1rem;
+            border: 2px dashed rgba(225, 29, 72, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .qr-code-section h4 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: #E11D48;
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            color: #6B7280;
+            border: 2px solid #E5E7EB;
+        }
+
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 1rem;
+            object-fit: contain;
+        }
+
+        .qr-description {
+            font-size: 0.875rem;
+            color: #9CA3AF;
+            margin-top: 1rem;
+        }
+
+        .form-iframe {
+            width: 100%;
+            height: 600px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid #374151;
+        }
+
+        .form-iframe iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .form-note {
+            font-size: 0.875rem;
+            color: #6B7280;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0F172A, #000000);
+            padding: 3rem 1rem 2rem;
+            border-top: 1px solid #1F2937;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #E11D48, #FB7185);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #9CA3AF;
+            font-size: 0.875rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links button {
+            background: none;
+            border: none;
+            color: #9CA3AF;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+            padding: 0;
+        }
+
+        .footer-links button:hover {
+            color: #E11D48;
+        }
+
+        .footer-links li {
+            color: #9CA3AF;
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1F2937;
+            padding-top: 2rem;
+            text-align: center;
+            color: #6B7280;
+            font-size: 0.875rem;
+        }
+
+        /* Icons */
+        .icon {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .icon-small {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: row;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .section-header h2 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+
+            .hero-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-image {
+                margin-top: 0;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .nav-container {
+                padding: 0 2rem;
+            }
+
+            section {
+                padding: 5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">Aashita Consulting Services</div>
+            
+            <div class="nav-right">
+                <div class="nav-menu">
+                    <button class="nav-link" onclick="scrollToSection('hero')">Home</button>
+                    <button class="nav-link" onclick="scrollToSection('services')">Services</button>
+                    <button class="nav-link" onclick="scrollToSection('about')">About</button>
+                </div>
+                
+                <button class="nav-btn" onclick="scrollToSection('contact')">Contact Us</button>
+                
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg class="icon" id="menu-icon" viewBox="0 0 24 24">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg class="icon" id="close-icon" style="display: none;" viewBox="0 0 24 24">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <button onclick="scrollToSection('hero'); toggleMobileMenu();">Home</button>
+            <button onclick="scrollToSection('services'); toggleMobileMenu();">Services</button>
+            <button onclick="scrollToSection('about'); toggleMobileMenu();">About</button>
+            <button class="nav-btn" onclick="scrollToSection('contact'); toggleMobileMenu();">Contact Us</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-badge">
+                        <svg class="icon icon-small" style="color: #E11D48;" viewBox="0 0 24 24">
+                            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                            <path d="M5 3v4"></path>
+                            <path d="M19 17v4"></path>
+                            <path d="M3 5h4"></path>
+                            <path d="M17 19h4"></path>
+                        </svg>
+                        <span>Your Growth Partner</span>
+                    </div>
+
+                    <h1>
+                        Elevate Your
+                        <span class="gradient-text">Career & Marketing</span>
+                    </h1>
+
+                    <p>Marketing consultation and career mentoring to help you achieve your professional goals. Strategic insights combined with personalized guidance for lasting success.</p>
+
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="scrollToSection('contact')">
+                            Get Started
+                            <svg class="icon icon-small" viewBox="0 0 24 24">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </button>
+                        <button class="btn-secondary" onclick="scrollToSection('services')">Our Services</button>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value" style="color: #E11D48;">Strategic</div>
+                            <div class="stat-label">Solutions</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" style="color: #FB7185;">Expert</div>
+                            <div class="stat-label">Guidance</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" style="color: #E11D48;">Results</div>
+                            <div class="stat-label">Driven</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-image-inner">
+                            <svg viewBox="0 0 400 300" style="width: 100%; height: 100%;">
+                                <circle cx="120" cy="100" r="35" fill="#E11D48" opacity="0.3"/>
+                                <circle cx="120" cy="100" r="25" fill="#E11D48"/>
+                                <path d="M 80 140 Q 80 120 100 120 L 140 120 Q 160 120 160 140 L 160 180 L 80 180 Z" fill="#E11D48" opacity="0.4"/>
+                                
+                                <circle cx="200" cy="90" r="35" fill="#FB7185" opacity="0.3"/>
+                                <circle cx="200" cy="90" r="25" fill="#FB7185"/>
+                                <path d="M 160 130 Q 160 110 180 110 L 220 110 Q 240 110 240 130 L 240 170 L 160 170 Z" fill="#FB7185" opacity="0.4"/>
+                                
+                                <circle cx="280" cy="100" r="35" fill="#E11D48" opacity="0.3"/>
+                                <circle cx="280" cy="100" r="25" fill="#E11D48"/>
+                                <path d="M 240 140 Q 240 120 260 120 L 300 120 Q 320 120 320 140 L 320 180 L 240 180 Z" fill="#E11D48" opacity="0.4"/>
+                                
+                                <line x1="50" y1="250" x2="350" y2="250" stroke="#334155" stroke-width="2"/>
+                                <line x1="50" y1="250" x2="50" y2="200" stroke="#334155" stroke-width="2"/>
+                                <polyline points="70,240 120,220 170,210 220,200 270,190 320,180" fill="none" stroke="#E11D48" stroke-width="3"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our <span class="gradient-text">Expertise</span></h2>
+                <p>Specialized marketing consultation and career mentoring services</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: rgba(225, 29, 72, 0.2);">
+                        <svg class="icon" style="color: #E11D48;" viewBox="0 0 24 24">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                            <path d="M12 9v4"></path>
+                            <path d="M12 17h.01"></path>
+                        </svg>
+                    </div>
+                    <h3>Marketing Strategy Consultation</h3>
+                    <p>Comprehensive marketing strategies tailored to your business objectives. We analyze market trends, competitor positioning, and consumer behavior to create actionable plans.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: rgba(251, 113, 133, 0.2);">
+                        <svg class="icon" style="color: #FB7185;" viewBox="0 0 24 24">
+                            <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Career Mentoring</h3>
+                    <p>One-on-one career guidance to help you navigate your professional journey. From career transitions to advancement strategies, we provide personalized mentorship.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: rgba(190, 18, 60, 0.2);">
+                        <svg class="icon" style="color: #BE123C;" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="6"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                        </svg>
+                    </div>
+                    <h3>Brand Positioning</h3>
+                    <p>Develop a compelling brand identity that resonates with your target audience. Strategic positioning to differentiate your business in the marketplace.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: rgba(225, 29, 72, 0.2);">
+                        <svg class="icon" style="color: #E11D48;" viewBox="0 0 24 24">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Professional Development</h3>
+                    <p>Skill enhancement programs and professional growth strategies. Build competencies that align with your career aspirations and industry demands.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: rgba(251, 113, 133, 0.2);">
+                        <svg class="icon" style="color: #FB7185;" viewBox="0 0 24 24">
+                            <path d="M3 3v18h18"></path>
+                            <path d="m19 9-5 5-4-4-3 3"></path>
+                        </svg>
+                    </div>
+                    <h3>Market Analysis</h3>
+                    <p>In-depth market research and competitive analysis to inform strategic decisions. Data-driven insights for effective marketing campaigns.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon" style="background-color: rgba(190, 18, 60, 0.2);">
+                        <svg class="icon" style="color: #BE123C;" viewBox="0 0 24 24">
+                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                        </svg>
+                    </div>
+                    <h3>Career Planning</h3>
+                    <p>Strategic career roadmap development aligned with your goals. Long-term planning for sustainable professional growth and success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="hero-image">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-image-inner">
+                            <svg viewBox="0 0 400 300" style="width: 100%; height: 100%;">
+                                <rect x="150" y="50" width="10" height="200" fill="#E11D48" opacity="0.3"/>
+                                <rect x="240" y="50" width="10" height="200" fill="#E11D48" opacity="0.3"/>
+                                
+                                <rect x="160" y="80" width="80" height="8" fill="#E11D48"/>
+                                <rect x="160" y="130" width="80" height="8" fill="#FB7185"/>
+                                <rect x="160" y="180" width="80" height="8" fill="#BE123C"/>
+                                <rect x="160" y="230" width="80" height="8" fill="#E11D48"/>
+                                
+                                <circle cx="200" cy="110" r="15" fill="#FB7185"/>
+                                <line x1="200" y1="125" x2="200" y2="165" stroke="#FB7185" stroke-width="4"/>
+                                <line x1="200" y1="135" x2="180" y2="150" stroke="#FB7185" stroke-width="4"/>
+                                <line x1="200" y1="135" x2="220" y2="150" stroke="#FB7185" stroke-width="4"/>
+                                <line x1="200" y1="165" x2="185" y2="185" stroke="#FB7185" stroke-width="4"/>
+                                <line x1="200" y1="165" x2="215" y2="185" stroke="#FB7185" stroke-width="4"/>
+                                
+                                <path d="M 300 150 L 300 80 M 280 100 L 300 80 L 320 100" stroke="#E11D48" stroke-width="4" fill="none"/>
+                                
+                                <path d="M 320 60 L 325 70 L 335 70 L 327 76 L 330 86 L 320 80 L 310 86 L 313 76 L 305 70 L 315 70 Z" fill="#FB7185"/>
+                                <path d="M 80 100 L 83 106 L 90 106 L 85 110 L 87 117 L 80 113 L 73 117 L 75 110 L 70 106 L 77 106 Z" fill="#E11D48" opacity="0.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <h2>
+                        About
+                        <span class="gradient-text">Aashita Consulting Services</span>
+                    </h2>
+
+                    <p style="font-size: 1.125rem; color: #D1D5DB;">
+                        We specialize in providing expert marketing consultation and career mentoring services. 
+                        Our approach combines strategic thinking with practical insights to deliver meaningful 
+                        results for professionals and businesses.
+                    </p>
+
+                    <p style="color: #9CA3AF;">
+                        Whether you're looking to enhance your marketing effectiveness or navigate your career 
+                        path, we offer personalized guidance tailored to your unique goals and challenges. 
+                        Our consultation sessions are designed to provide actionable strategies and sustainable 
+                        solutions.
+                    </p>
+
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <svg class="icon icon-small value-icon" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span style="color: #D1D5DB;">Strategic marketing expertise</span>
+                        </div>
+                        <div class="value-item">
+                            <svg class="icon icon-small value-icon" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span style="color: #D1D5DB;">Personalized career mentoring</span>
+                        </div>
+                        <div class="value-item">
+                            <svg class="icon icon-small value-icon" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span style="color: #D1D5DB;">Industry insights and trends</span>
+                        </div>
+                        <div class="value-item">
+                            <svg class="icon icon-small value-icon" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span style="color: #D1D5DB;">Actionable consultation sessions</span>
+                        </div>
+                        <div class="value-item">
+                            <svg class="icon icon-small value-icon" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span style="color: #D1D5DB;">Professional growth focus</span>
+                        </div>
+                        <div class="value-item">
+                            <svg class="icon icon-small value-icon" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span style="color: #D1D5DB;">Results-driven approach</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" onclick="scrollToSection('contact')" style="margin-top: 2rem; align-self: flex-start;">
+                        Schedule a Consultation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>
+                    Let's Discuss Your
+                    <span class="gradient-text">Goals & Strategy</span>
+                </h2>
+                <p>Get in touch to schedule a consultation session</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-form-card">
+                    <h3>Contact Form</h3>
+                    <p class="form-description">Fill out our consultation form below. We'll get back to you within 24 hours.</p>
+
+                    <!-- QR Code Section -->
+                    <div class="qr-code-section">
+                        <h4>Scan to Contact</h4>
+                        <div class="qr-placeholder">
+                            <!-- Replace this div with an img tag containing your QR code -->
+                            <!-- Example: <img src="your-qr-code.png" alt="Contact QR Code" class="qr-image"> -->
+                            Place your QR code here
+                        </div>
+                        <p class="qr-description">Scan this QR code to quickly access our contact form on your mobile device</p>
+                    </div>
+
+                    <div class="form-iframe">
+                        <iframe
+                            src="https://forms.office.com/Pages/ResponsePage.aspx?id=YOUR_FORM_ID"
+                            title="Contact Form"
+                        >
+                            Loading form...
+                        </iframe>
+                    </div>
+
+                    <p class="form-note">Secure form powered by Microsoft Forms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Aashita Consulting Services</h3>
+                    <p>Professional marketing consultation and career mentoring services to help you achieve your goals.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><button onclick="scrollToSection('services')">Services</button></li>
+                        <li><button onclick="scrollToSection('about')">About</button></li>
+                        <li><button onclick="scrollToSection('contact')">Contact</button></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li>Marketing Consultation</li>
+                        <li>Career Mentoring</li>
+                        <li>Brand Positioning</li>
+                        <li>Professional Development</li>
+                        <li>Market Analysis</li>
+                        <li>Career Planning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Aashita Consulting Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+
+        // Smooth Scroll
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Set Current Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
